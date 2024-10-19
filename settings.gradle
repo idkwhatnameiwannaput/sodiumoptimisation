@@ -1,0 +1,26 @@
+pluginManagement {
+	resolutionStrategy {
+		eachPlugin {
+			if (requested.id.id == 'io.github.gradle-nexus.publish-plugin') {
+				useVersion '1.1.0'
+			}
+		}
+	}
+}
+
+plugins {
+	id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+}
+
+rootProject.name = 'proguard-core-root'
+
+include('base')
+include('android')
+include('examples')
+include('tools')
+
+// Rename base as proguard-core for backwards compatibility
+project(':base').name = "proguard-core"
+project(':android').name = 'proguard-core-android'
+project(':examples').name = 'proguard-core-examples'
+project(':tools').name = 'proguard-core-tools'
